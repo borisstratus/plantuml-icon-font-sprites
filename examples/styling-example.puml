@@ -3,6 +3,9 @@
 skinparam defaultTextAlignment center
 
 !include ../icons/common.puml
+!include ../icons/devicons/mysql.puml
+!include ../icons/font-awesome/server.puml
+!include ../icons/font-awesome-5/database.puml
 
 title Styling example
 
@@ -20,5 +23,5 @@ web1 <--> db1
 web2 <--> db1
 web3 <--> db1
 web4 <--> db1
-
+ 
 @enduml
