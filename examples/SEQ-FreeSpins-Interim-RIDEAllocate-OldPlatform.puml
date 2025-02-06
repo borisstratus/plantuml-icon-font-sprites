@@ -1,0 +1,344 @@
+' =======================================
+' Rank PlantUML Theme
+' Description: Used for importing in PlantUML diagrams to get consistent styling.
+'
+' How to include this theme in your document:
+'   Add the following tag at the top of the file:
+'   !include ../../theme.puml
+'
+'   Subsections can also be included:
+'   e.g.   !includesub theme.puml!<DIAGRAM_TYPE>
+'         !includesub theme.puml!ACTIVITY
+'
+' Stereotype tagging
+'   Allows tagging components as <<New>> or <<Changed>>
+'   Gives new or changed components a different colour to unchanged components;
+'   usage:
+'     [my component] as myc <<New>>
+'
+' Sprites
+'   To use the sprites add one of the macros
+'   e.g.   DEV_MYSQL(db)
+'         FA_SERVER(web2,WEB1) #Yellow
+'         FA5_DATABASE(db1,LIVE,database,white) #RoyalBlue
+'   <prefix>_<name>(alias)
+'   <prefix>_<name>(alias,label)
+'   <prefix>_<name>(alias,label,shape)
+'   <prefix>_<name>(alias,label,shape,color)
+'
+' Pallette :
+'   from http://colrd.com/palette/18872/
+'   red    : #d73027
+'   orange : #fc8d59
+'   yellow : #fee090
+'   lblue  : #e0f3f8
+'   mblue  : #91bfdb
+'   dblue  : #4575b4
+' =======================================
+@startuml
+!theme plain
+!define LIB ../lib
+!define ICONS  LIB/icons
+
+' == Default Sprites ==
+!include ICONS/common.puml
+!includeurl ICONS/devicons/mysql.puml
+!includeurl ICONS/font-awesome/server.puml
+!includeurl ICONS/font-awesome-5/database.puml
+
+' == Variables ==
+!$fontName = "Arial"
+!$largeFontSize = "16"
+!$fontSize = "12"
+!$smallFontSize="9"
+!fontColor = "black"
+!fontReverseColor = "white"
+!$colorBackground = "white"
+!$colorDark1 = "#2F5E89"
+!$colorDark2 = "#9DC3E6"
+!$colorDark3 = "#2e75b6"
+!$colorNote1 = "#fdf1c1"
+!$colorNote2 = "#777"
+!$colorLight1= "white"
+!$colorLight2= "white"
+!$colorLight3= "white"
+
+' == General ==
+skinparam BackgroundColor white
+skinparam Shadowing false
+skinparam Dpi 100
+skinparam RoundCorner 8
+skinparam BoxPadding 20
+skinparam default {
+    FontName $fontName
+    FontSize $fontSize
+    FontColor black
+    MonospacedFontName Source Code Pro
+}
+skinparam legendBorderColor white
+skinparam legendFontSize 11
+
+skinparam shadowing false
+skinparam noteBorderColor #777
+skinparam NoteBackgroundColor #fdf1c1
+skinparam legendBorderColor white
+skinparam legendFontSize 11
+
+skinparam queueBackgroundColor #4575b4
+skinparam queueBackgroundColor #4575b4
+
+' == Participant ==
+skinparam Queue {
+    BackgroundColor #4575b4
+    BorderColor black
+    FontColor white
+    Padding 20
+}
+skinparam arrowFontSize 10
+skinparam Arrow {
+    Color #black
+    FontColor black
+}
+
+'
+' Database
+'
+skinparam database {
+   FontSize 11
+   BackgroundColor #64aac3
+   FontColor black
+
+   BackgroundColor<<Referenced>> #D0D0D0
+   FontColor<<Referenced>> Black
+
+   FontColor<<Changed>> Black
+   FontSize<<Changed>> 10
+   BorderColor<<Changed>> Black
+
+   BackgroundColor<<Changed>> #f29d38
+   BackgroundColor<<New>> #ff6050
+   BorderColor<<New>> black
+   FontColor<<New>> black
+   FontSize<<New>> 12
+}
+
+'
+' Component styles
+'
+skinparam componentFontSize 12
+skinparam component {
+  FontColor #black
+  BackgroundColor #64aac3
+
+  BackgroundColor<<database>> #fc8d59
+  BackgroundColor<<controller>> #e0f3f8
+  BackgroundColor<<repository>> #91bfdb
+  FontColor<<repository>> black
+
+  BackgroundColor<<New>> #ff6050
+  BorderColor<<New>> black
+  FontColor<<New>> black
+  FontSize<<New>> 12
+
+  BackgroundColor<<Changed>> #f29d38
+  BorderColor<<Changed>> black
+  FontColor<<Changed>> Black
+  FontSize<<Changed>> 12
+
+  BackgroundColor<<Unchanged>> #f0f0f0
+  BorderColor<<Unchanged>> #a0a0a0
+  FontColor<<Unchanged>> Black
+  FontSize<<Unchanged>> 11
+
+  BackgroundColor<<Removed>> Tomato
+  BorderColor<<Removed>> black
+  FontColor<<Removed>> Black
+  FontSize<<Removed>> 12
+}
+
+skinparam rectangle {
+  FontColor #black
+  BackgroundColor #64aac3
+
+  BackgroundColor<<database>> #fc8d59
+  BackgroundColor<<controller>> #e0f3f8
+  BackgroundColor<<repository>> #91bfdb
+  FontColor<<repository>> black
+
+  BackgroundColor<<New>> #ff6050
+  BorderColor<<New>> black
+  FontColor<<New>> black
+  FontSize<<New>> 12
+
+  BackgroundColor<<Changed>> #f29d38
+  BorderColor<<Changed>> black
+  FontColor<<Changed>> Black
+  FontSize<<Changed>> 12
+
+  BackgroundColor<<Unchanged>> #f0f0f0
+  BorderColor<<Unchanged>> #a0a0a0
+  FontColor<<Unchanged>> Black
+  FontSize<<Unchanged>> 11
+
+  BackgroundColor<<Removed>> Tomato
+  BorderColor<<Removed>> black
+  FontColor<<Removed>> Black
+  FontSize<<Removed>> 12
+}
+
+skinparam node {
+  BackgroundColor<<New>> #ff6050
+  FontColor<<New>> Black
+  BorderColor<<New>> #FF6655
+  FontSize<<New>> 10
+  BorderColor<<New>> black
+
+  BackgroundColor<<Changed>> Orange
+  FontColor<<Changed>> Black
+  BorderColor<<Changed>> #FF6655
+  FontSize<<Changed>> 10
+  BorderColor<<Changed>> black
+
+  BackgroundColor<<Removed>> Red
+  FontColor<<Removed>> Black
+  BorderColor<<Removed>> #FF6655
+  FontSize<<Removed>> 10
+  BorderColor<<Removed>> black
+}
+' == Note ==
+
+
+'  == Partition ==
+'skinparam Partition {
+'  BackgroundColor $colorLight1
+'  BorderColor $colorDark1
+'  FontStyle bold
+'}
+
+' == Actor ==
+'skinparam Actor {
+'    BackgroundColor $colorDark1
+'    BorderColor $colorDark2
+'    FontStyle bold
+'}
+
+' == Participant ==
+'skinparam Participant {
+'    BackgroundColor $colorDark1
+'    BorderColor $colorDark2
+'    Padding 20
+'}
+
+'skinparam Entity {
+'    BackgroundColor $colorDark1
+'    BorderColor $colorDark2
+'    FontStyle bold
+'}
+
+
+'== Participant ==
+skinparam Participant {
+     BackgroundColor #c7e3f6
+'    BorderColor $colorDark2
+'    Padding 20
+}
+
+skinparam Sequence {
+    MessageAlignment center
+    MessageTextAlignment center
+    MessageFontColor black
+    BoxBackgroundColor white
+    '$colorLight1
+'    BoxBorderColor $colorDark1
+    BoxPadding 10
+'    DividerBackgroundColor $colorLight1
+'    DividerBorderColor $colorDark1
+    DividerFontColor black
+'    GroupBackgroundColor $colorLight1
+'    GroupBodyBackgroundColor $colorDark1
+    GroupBorderColor $colorDark1
+    TitleFontName $fontName
+    TitleFontSize $largeFontSize
+    TitleFontStyle bold
+    TitleFontColor black
+    '$colorLight1
+}
+'
+' ======================
+<style>
+activityDiagram {
+  BackgroundColor #e6e7e8
+  BorderColor #33668E
+  FontColor black
+  FontName arial
+  diamond {
+    BackgroundColor #f9d999
+    LineColor gray
+    FontColor black
+    FontName arial
+    FontSize 13
+  }
+  line {
+    color blue
+    }
+  arrow {
+    FontColor black
+    FontName arial
+    FontSize 15
+  }
+  partition {
+    LineColor red
+    FontColor green
+    RoundCorner 10
+    BackgroundColor PeachPuff
+  }
+  note {
+    FontColor Blue
+    LineColor Navy
+    BackgroundColor #ccf
+    FontSize 13
+  }
+}
+document {
+   BackgroundColor white
+}
+</style>
+
+
+footer \n\n\nGenerated on %date()
+
+
+'
+' ======================== Macros =========================
+'
+
+'  Macro for custom component shape
+'  usage: $component(ruleengine, "Rule Evaluator", rule-engine/ACT-rule-evaluator.puml)
+!unquoted procedure $component($name, $description, $link="", $link2="")
+component $name as "$description
+
+<size:8>See [[$link]]</size>
+    !if ($link2 != "")
+<size:8>and [[$link2]]</size>
+    !endif
+    "
+!endprocedure
+
+'
+'  Macro for a table in ER diagram
+'
+!define Table(name,desc) class name as "desc" << (T,#FFAAAA) >>
+' bold=primary key, green=unique, underscore=not_null
+!define primary_key(x) <b>x <<PK>></b>
+!define unique(x) <color:green>x</color>
+!define not_null(x) <u>x</u>
+!define natural_key(x) <u><<x>></u>
+' example
+'   Table(Competition, "Competition\n(     )") {
+'     * primary_key(not_null(ID)) int <<IDENTITY>>
+'       not_null(SkinID) int
+'       AffiliateURL nvarchar[500]
+'   }
+'
+
+@enduml
