@@ -1,11 +1,11 @@
 @startuml
 
 skinparam defaultTextAlignment center
-
-!include ../icons/common.puml
-!include ../icons/devicons/mysql.puml
-!include ../icons/font-awesome/server.puml
-!include ../icons/font-awesome-5/database.puml
+!define ICONS ../icons
+!include ICONS/icons/common.puml
+!include ICONS/icons/devicons/mysql.puml
+!include ICONS/icons/font-awesome/server.puml
+!include ICONS/icons/font-awesome-5/database.puml
 
 title Styling example
 
